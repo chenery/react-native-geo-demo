@@ -2,12 +2,16 @@ import { combineReducers } from 'redux';
 import { PENDING, FULFILLED, REJECTED } from 'redux-promise-middleware'
 import { FACEBOOK_LOG_IN, GEO_LOCATION, LOG_IN, ANON_LOG_IN, LOG_OUT, ONLINE, OFFLINE } from './actions';
 
+// TODO create a second reducer for user actions?
+import { ONLINE_USERS, ONLINE_USERS_UPDATED } from './Actions/user-actions';
+
 const initialState = {
   isLoading: true,
   isLoggedIn: false,
   isOnline: false,
   user: null,
-  userLocationPin: null
+  userLocationPin: null,
+  onlineUsers: []
 };
 
 function userReducer(state = initialState, action) {
@@ -41,7 +45,8 @@ function userReducer(state = initialState, action) {
         isLoggedIn: false,
         isOnline: false,
         user: null,
-        userLocationPin: null
+        userLocationPin: null,
+        onlineUsers: []
       })
       break;
 
@@ -71,17 +76,38 @@ function userReducer(state = initialState, action) {
       return Object.assign({}, state, {
         isLoading: false,
         isOnline: false,
-        userLocationPin: null
+        userLocationPin: null,
+        onlineUsers: []
       })
       break;
 
-      case OFFLINE:
-        return Object.assign({}, state, {
-          isLoading: false,
-          isOnline: false,
-          userLocationPin: null
-        })
-        break;
+    case OFFLINE:
+      return Object.assign({}, state, {
+        isLoading: false,
+        isOnline: false,
+        userLocationPin: null,
+        onlineUsers: []
+      })
+      break;
+
+    // case ONLINE_USERS + '_' + PENDING:
+    //   return Object.assign({}, state, {
+    //     isLoading: true
+    //   })
+    //   break;
+
+    case ONLINE_USERS + '_' + FULFILLED:
+      return Object.assign({}, state, {
+        isLoading: false,
+        onlineUsers: action.payload
+      })
+      break;
+
+    case ONLINE_USERS_UPDATED:
+      return Object.assign({}, state, {
+        onlineUsers: action.onlineUsers
+      })
+      break;
 
     default:
       return state;

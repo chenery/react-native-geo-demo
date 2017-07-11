@@ -1,41 +1,34 @@
 import React, {Component} from 'react';
 import { Text, View, FlatList } from 'react-native';
-import UserListItem from './UserListItem';
 import Message from '../Generic/Message';
-import {UserStore} from '../Repository/Firebase';
+import { connect } from 'react-redux';
+import { onlineUsers, onlineUsersUpdated, cancelOnlineUsersSearch } from '../Redux/Actions/user-actions'
 
 class OnlineUsers extends Component {
   constructor(props) {
     super(props);
     this.usersUpdated = this.usersUpdated.bind(this);
-    this.state = {
-        users: []
-    };
   }
 
   componentDidMount() {
     console.log('OnlineUsers did mount');
-    UserStore.findUsers(this.props.userLocationPin, this.usersUpdated)
-      .then((users) => {
-        this.setState({users: users});
-      });
+    this.props.dispatch(onlineUsers(this.props.userLocationPin, this.usersUpdated));
   }
 
   componentWillUnmount() {
     console.log('OnlineUsers component will unmount');
-    UserStore.cancelFindUsers();
+    this.props.dispatch(cancelOnlineUsersSearch());
   }
 
-  usersUpdated(users) {
-      console.log('Online Users detected updated users, now size %d',
-        users.length);
-      this.setState({users: users});
+  usersUpdated(onlineUsers) {
+    console.log('Online Users detected updated users, now size %d', onlineUsers.length);
+    this.props.dispatch(onlineUsersUpdated(onlineUsers));
   }
 
   render() {
-    const users = this.state.users;
-    const noUsersFound = this.state.users.length === 0;
-    const listItems = users.map((user) => {
+    const onlineUsers = this.props.onlineUsers;
+    const noUsersFound = this.props.onlineUsers.length === 0;
+    const listItems = onlineUsers.map((user) => {
       return { key: user.name }
     });
 
@@ -49,10 +42,15 @@ class OnlineUsers extends Component {
       </View>
     );
   }
+}
 
-  componentDidUpdate() {
-    console.log('OnlineUsers component updated');
+function mapStateToProps(state) {
+  const { userLocationPin, onlineUsers } = state.userReducer
+
+  return {
+    userLocationPin,
+    onlineUsers
   }
 }
 
-export default OnlineUsers;
+export default connect(mapStateToProps)(OnlineUsers)

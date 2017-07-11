@@ -1,8 +1,8 @@
 {
   "expoServerPort": 19000,
-  "packagerPort": 19002,
-  "packagerPid": 6069,
+  "packagerPort": 19001,
+  "packagerPid": 6464,
   "expoServerNgrokUrl": "https://9n-x9n.chenery.react-native-geo-demo.exp.direct",
   "packagerNgrokUrl": "https://packager.9n-x9n.chenery.react-native-geo-demo.exp.direct",
-  "ngrokPid": 6083
+  "ngrokPid": 6480
 }

@@ -48,7 +48,6 @@ class AppPanel extends Component {
     const isOnline = this.props.isLoggedIn && this.props.isOnline;
     const user = this.props.user;
     const name = this.props.user ? this.props.user.name : "Unknown";
-    const userLocationPin = this.props.userLocationPin;
 
     let locationComponent = null;
     if (isLoggedIn) {
@@ -61,21 +60,20 @@ class AppPanel extends Component {
       <View>
         <Login name={name} isLoggedIn={isLoggedIn} onLogin={this.onLogin} onLogout={this.onLogout}/>
         <View>{locationComponent}</View>
-        {isOnline && <OnlineUsers userLocationPin={userLocationPin} />}
+        {isOnline && <OnlineUsers/>}
       </View>
     );
   }
 }
 
 function mapStateToProps(state) {
-  const { isLoading, isLoggedIn, isOnline, user, userLocationPin } = state.userReducer
+  const { isLoading, isLoggedIn, isOnline, user } = state.userReducer
 
   return {
     isLoading,
     isLoggedIn,
     isOnline,
-    user,
-    userLocationPin
+    user
   }
 }
 
