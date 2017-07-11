@@ -67,7 +67,7 @@ class AppPanel extends Component {
 }
 
 function mapStateToProps(state) {
-  const { isLoading, isLoggedIn, isOnline, user } = state.userReducer
+  const { isLoading, isLoggedIn, isOnline, user } = state.loginReducer
 
   return {
     isLoading,

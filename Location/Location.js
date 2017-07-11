@@ -38,7 +38,7 @@ class Location extends Component {
 
 // TODO is there a nicer way of doing this per component?
 function mapStateToProps(state) {
-  const { isOnline, user } = state.userReducer
+  const { isOnline, user } = state.loginReducer
 
   return {
     isOnline,

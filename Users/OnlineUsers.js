@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import { Text, View, FlatList } from 'react-native';
 import Message from '../Generic/Message';
+import Loading from '../Generic/Loading';
 import { connect } from 'react-redux';
-import { onlineUsers, onlineUsersUpdated, cancelOnlineUsersSearch } from '../Redux/Actions/user-actions'
+import { onlineUsers, onlineUsersUpdated, cancelOnlineUsersSearch } from '../Redux/Actions/userActions'
 
 class OnlineUsers extends Component {
   constructor(props) {
@@ -26,6 +27,13 @@ class OnlineUsers extends Component {
   }
 
   render() {
+
+    const isOnlineUsersLoading = this.props.isOnlineUsersLoading;
+
+    if (isOnlineUsersLoading) {
+      return (<Loading />);
+    }
+
     const onlineUsers = this.props.onlineUsers;
     const noUsersFound = this.props.onlineUsers.length === 0;
     const listItems = onlineUsers.map((user) => {
@@ -45,10 +53,12 @@ class OnlineUsers extends Component {
 }
 
 function mapStateToProps(state) {
-  const { userLocationPin, onlineUsers } = state.userReducer
+  const { userLocationPin } = state.loginReducer;
+  const { isOnlineUsersLoading, onlineUsers } = state.userReducer;
 
   return {
     userLocationPin,
+    isOnlineUsersLoading,
     onlineUsers
   }
 }
