@@ -1,5 +1,5 @@
 import { PENDING, FULFILLED, REJECTED } from 'redux-promise-middleware'
-import { FACEBOOK_LOG_IN, GEO_LOCATION, LOG_IN, ANON_LOG_IN, LOG_OUT, ONLINE, OFFLINE } from '../actions';
+import { FACEBOOK_LOG_IN, LOG_IN, ANON_LOG_IN, LOG_OUT, ONLINE, OFFLINE } from '../Actions/loginActions';
 
 const initialState = {
   isLoading: true,

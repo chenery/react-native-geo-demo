@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
-import {initFirebaseLogin, facebookLogin, initLogout, initOffline} from '../Redux/actions';
+import {initFirebaseLogin, facebookLogin, initLogout, initOffline} from '../Redux/Actions/loginActions';
 import Login from '../Login/Login';
 import Location from '../Location/Location';
 import OnlineUsers from "../Users/OnlineUsers"

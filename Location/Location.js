@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Button, View } from 'react-native';
-import {LocationStore} from '../Repository/Firebase';
-import {online, initOffline, initMoveOnline} from '../Redux/actions';
+import { LocationStore } from '../Repository/Firebase';
+import { initOffline, initMoveOnline } from '../Redux/Actions/loginActions';
 import { connect } from 'react-redux';
 
 class Location extends Component {
@@ -36,7 +36,6 @@ class Location extends Component {
   }
 }
 
-// TODO is there a nicer way of doing this per component?
 function mapStateToProps(state) {
   const { isOnline, user } = state.loginReducer
 
