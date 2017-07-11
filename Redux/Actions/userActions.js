@@ -2,7 +2,7 @@
 * Actions relating to online users
 */
 
-import { UserStore } from '../../Repository/Firebase';
+import { UserStore } from '../../Services/Firebase';
 
 
 /**

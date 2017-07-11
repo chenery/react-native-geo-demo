@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
-import {initFirebaseLogin, facebookLogin, initLogout, initOffline} from '../Redux/Actions/loginActions';
+import { initFirebaseLogin, facebookLogin, initLogout, initOffline } from '../../Redux/Actions/loginActions';
 import Login from '../Login/Login';
 import Location from '../Location/Location';
 import OnlineUsers from "../Users/OnlineUsers"
-import {FirebaseAuth} from '../Repository/Firebase';
-import {LocationStore} from '../Repository/Firebase';
+import { FirebaseAuth } from '../../Services/Firebase';
+import { LocationStore } from '../../Services/Firebase';
 import Loading from '../Generic/Loading';
 
 class AppPanel extends Component {

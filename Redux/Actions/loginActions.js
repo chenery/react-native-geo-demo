@@ -2,10 +2,10 @@
 * Actions relating to login/logout/online/offline
 */
 
-import {FirebaseAuth} from '../../Repository/Firebase';
-import {UserStore} from '../../Repository/Firebase';
-import {LocationStore} from '../../Repository/Firebase';
-import Auth from '../../Auth/FacebookAuth';
+import {FirebaseAuth} from '../../Services/Firebase';
+import {UserStore} from '../../Services/Firebase';
+import {LocationStore} from '../../Services/Firebase';
+import Auth from '../../Services/Auth/FacebookAuth';
 
 /**
 * Action names published for use in reducers

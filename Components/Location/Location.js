@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, View } from 'react-native';
-import { LocationStore } from '../Repository/Firebase';
-import { initOffline, initMoveOnline } from '../Redux/Actions/loginActions';
+import { LocationStore } from '../../Services/Firebase';
+import { initOffline, initMoveOnline } from '../../Redux/Actions/loginActions';
 import { connect } from 'react-redux';
 
 class Location extends Component {

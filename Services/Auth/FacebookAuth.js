@@ -1,5 +1,5 @@
 import Expo from 'expo';
-import { facebookConfig } from '../config';
+import { facebookConfig } from '../../config';
 
 const Facebook = {
   login: (permissions) => {

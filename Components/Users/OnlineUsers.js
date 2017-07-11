@@ -3,7 +3,7 @@ import { Text, View, FlatList } from 'react-native';
 import Message from '../Generic/Message';
 import Loading from '../Generic/Loading';
 import { connect } from 'react-redux';
-import { onlineUsers, onlineUsersUpdated, cancelOnlineUsersSearch } from '../Redux/Actions/userActions'
+import { onlineUsers, onlineUsersUpdated, cancelOnlineUsersSearch } from '../../Redux/Actions/userActions'
 
 class OnlineUsers extends Component {
   constructor(props) {
