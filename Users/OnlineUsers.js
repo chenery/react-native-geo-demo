@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Text, View, FlatList } from 'react-native';
 import UserListItem from './UserListItem';
 import Message from '../Generic/Message';
 import {UserStore} from '../Repository/Firebase';
@@ -34,15 +35,18 @@ class OnlineUsers extends Component {
   render() {
     const users = this.state.users;
     const noUsersFound = this.state.users.length === 0;
-    const listItems = users.map(user =>
-      <UserListItem key={user.id} name={user.name}/>
-    );
+    const listItems = users.map((user) => {
+      return { key: user.name }
+    });
 
     return (
-      <div>
+      <View>
         {noUsersFound && <Message message="No users found"/>}
-        <ul>{listItems}</ul>
-      </div>
+        <FlatList
+          data={listItems}
+          renderItem={({item}) => <Text>{item.key}</Text>}
+        />
+      </View>
     );
   }
 

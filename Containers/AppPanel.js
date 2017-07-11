@@ -61,13 +61,11 @@ class AppPanel extends Component {
       <View>
         <Login name={name} isLoggedIn={isLoggedIn} onLogin={this.onLogin} onLogout={this.onLogout}/>
         <View>{locationComponent}</View>
+        {isOnline && <OnlineUsers userLocationPin={userLocationPin} />}
       </View>
     );
   }
 }
-
-
-// {isOnline && <OnlineUsers userLocationPin={userLocationPin} />}
 
 function mapStateToProps(state) {
   const { isLoading, isLoggedIn, isOnline, user, userLocationPin } = state.userReducer

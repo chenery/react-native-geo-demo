@@ -15,6 +15,9 @@ export const ONLINE = 'ONLINE';
 export const OFFLINE = 'OFFLINE';
 
 /**
+
+TODO - remove the clutter from here, leave only the redux action stuff
+
   FLOW:
   Init app "loading"
   checkForNewLogin  -> FB Login Found -> Save User -> login state

@@ -6,3 +6,7 @@ export const firebaseConfig = {
   storageBucket: "lunch-54c74.appspot.com",
   messagingSenderId: "361721093034"
 };
+
+export const facebookConfig = {
+  appId: '290526404722897'
+};
